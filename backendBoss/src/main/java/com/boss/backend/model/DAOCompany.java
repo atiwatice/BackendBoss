@@ -2,9 +2,12 @@ package com.boss.backend.model;
 
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -14,44 +17,41 @@ public class DAOCompany {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMPANY_ID_SEQ")
-	private long COMPANY_ID;
+	private long company_id;
 	
-	public long getCOMPANY_ID() {
-        return COMPANY_ID;
+	public long getCompany_id() {
+        return company_id;
     }
 
 	
-    @OneToMany(targetEntity=DAOUser.class,mappedBy="COMPANY_ID", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity=DAOUser.class,mappedBy="company_id", cascade = CascadeType.ALL)
     private List<DAOUser> DAOUsers;
     
-	@Column(columnDefinition= "VARCHAR2(20 CHAR) " + 
+	@Column(name="COMPANY_NAME",columnDefinition= "VARCHAR2(20 CHAR) " + 
 			"CONSTRAINT company_company_name_nn NOT NULL")
-	private String COMPANY_NAME;
-	public String getCOMPANY_NAME() {
-		return COMPANY_NAME;
+	private String company_name;
+	public String getCompany_name() {
+		return company_name;
 	}
-	public void setCOMPANY_NAME(String COMPANY_NAME) {
-		this.COMPANY_NAME = COMPANY_NAME;
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
 	}
 	
-	@Column(columnDefinition= "VARCHAR2(100 CHAR)")
-	private String COMPANY_DETAIL;
+	@Column(name="COMPANY_DETAIL",columnDefinition= "VARCHAR2(100 CHAR)")
+	private String company_detail;
 	
-	public String getCOMPANY_DETAIL() {
-		return COMPANY_DETAIL;
+	public String getCompany_detail() {
+		return company_detail;
 	}
 
-	public void setCOMPANY_DETAIL(String COMPANY_DETAIL) {
-		this.COMPANY_DETAIL = COMPANY_DETAIL;
+	public void setCompany_detail(String company_detail) {
+		this.company_detail = company_detail;
 	}
 	
 	
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private String DATETIME;
-	
-	public String getDATETIME() {
-		return DATETIME;
-	}
+	@Column(name ="DATETIME")
+	@CreationTimestamp
+    private LocalDateTime createdAt;
 
 	
 }

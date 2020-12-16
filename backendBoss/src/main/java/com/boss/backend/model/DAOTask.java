@@ -11,77 +11,77 @@ public class DAOTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "TASK_ID_SEQ")
-	private long TASK_ID;
+	private long task_id;
 
-	public long getTASK_ID() {
-		return TASK_ID;
-	}
-
-	public void setTASK_ID(long TASK_ID) {
-		this.TASK_ID = TASK_ID;
-	}
-	
-	
-	@Column(columnDefinition = "VARCHAR2(100 CHAR) " + "CONSTRAINT task_task_name_nn NOT NULL")
-	private String TASK_NAME;
-	
-	public String getTASK_NAME() {
-		return TASK_NAME;
+	public long getTask_id() {
+		return task_id;
 	}
 
-	public void setTASK_NAME(String TASK_NAME) {
-		this.TASK_NAME = TASK_NAME;
+	public void setTask_id(long task_id) {
+		this.task_id = task_id;
 	}
 	
 	
-	@Column(columnDefinition = "DATE " + "CONSTRAINT task_start_date_nn NOT NULL")
-	private String START_DATE;
+	@Column(name="TASK_NAME",columnDefinition = "VARCHAR2(100 CHAR) " + "CONSTRAINT task_task_name_nn NOT NULL")
+	private String task_name;
 	
-	public String getSTART_DATE() {
-		return START_DATE;
-	}
-
-	public void setSTART_DATE(String START_DATE) {
-		this.START_DATE = START_DATE;
-	}
-	
-	
-	@Column(columnDefinition = "DATE " + "CONSTRAINT task_end_date_nn NOT NULL")
-	private String END_DATE;
-	
-	public String getEND_DATE() {
-		return END_DATE;
+	public String getTask_name() {
+		return task_name;
 	}
 
-	public void setEND_DATE(String END_DATE) {
-		this.END_DATE = END_DATE;
+	public void setTask_name(String task_name) {
+		this.task_name = task_name;
 	}
 	
 	
-	@Column(columnDefinition= "VARCHAR2(20 CHAR) " + 
+	@Column(name="START_DATE",columnDefinition = "DATE " + "CONSTRAINT task_start_date_nn NOT NULL")
+	private String start_date;
+	
+	public String getStart_date() {
+		return start_date;
+	}
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+	
+	
+	@Column(name="END_DATE",columnDefinition = "DATE " + "CONSTRAINT task_end_date_nn NOT NULL")
+	private String end_date;
+	
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
+	}
+	
+	
+	@Column(name="STATUS",columnDefinition= "VARCHAR2(20 CHAR) " + 
 			"CONSTRAINT task_status_nn  NOT NULL")
-	private String STATUS;
+	private String status;
 
-	public String getSTATUS() {
-		return STATUS;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setSTATUS(String STATUS) {
-		this.STATUS = STATUS;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "TASK_OWNER_ID", referencedColumnName = "USER_ID", columnDefinition = "integer")
-	private DAOUser TASK_OWNER_ID;
-	public DAOUser getTASK_OWNER_ID() {
-		return TASK_OWNER_ID;
+	@JoinColumn(name = "TASK_OWNER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
+	private DAOUser task_owner_id;
+	public DAOUser getTask_owner_id() {
+		return task_owner_id;
 	}
 
-	public void setTASK_OWNER_ID(DAOUser TASK_OWNER_ID) {
-		this.TASK_OWNER_ID = TASK_OWNER_ID;
+	public void setTask_owner_id(DAOUser task_owner_id) {
+		this.task_owner_id = task_owner_id;
 	}
 	
-	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="TASK_ID", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="task_id", cascade = CascadeType.ALL)
 	private List<DAOSubTask> DAOSubTask_Task_id;
 	
 }

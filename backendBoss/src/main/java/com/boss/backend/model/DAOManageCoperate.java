@@ -1,6 +1,10 @@
 package com.boss.backend.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "MANAGE_COPERATE")
@@ -9,40 +13,40 @@ public class DAOManageCoperate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "MANAGE_COPERATE_ID_SEQ")
-	private long MANAGE_COPERATE_ID;
+	private long manage_coperate_id;
 
-	public long getMANAGE_COPERATE_ID() {
-		return MANAGE_COPERATE_ID;
+	public long getManage_coperate_id() {
+		return manage_coperate_id;
 	}
 
-	public void setMANAGE_COPERATE_ID(long MANAGE_COPERATE_ID) {
-		this.MANAGE_COPERATE_ID = MANAGE_COPERATE_ID;
+	public void setManage_coperate_id(long manage_coperate_id) {
+		this.manage_coperate_id = manage_coperate_id;
 	}
 
 
 	@ManyToOne
-	@JoinColumn(name = "REQUESTER_ID", referencedColumnName = "USER_ID", columnDefinition = "integer")
-	private DAOUser REQUESTER_ID;
-	public DAOUser getREQUESTER_ID() {
-		return REQUESTER_ID;
+	@JoinColumn(name = "REQUESTER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
+	private DAOUser requester_id;
+	public DAOUser getRequester_id() {
+		return requester_id;
 	}
 
-	public void setREQUESTER_ID(DAOUser REQUESTER_ID) {
-		this.REQUESTER_ID = REQUESTER_ID;
+	public void setRequester_id(DAOUser requester_id) {
+		this.requester_id = requester_id;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "ACCEPTER_ID", referencedColumnName = "USER_ID", columnDefinition = "integer")
-	private DAOUser ACCEPTER_ID;
-	public DAOUser getACCEPTER_ID() {
-		return ACCEPTER_ID;
+	@JoinColumn(name = "ACCEPTER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
+	private DAOUser accepter_id;
+	public DAOUser getAccepter_id() {
+		return accepter_id;
 	}
 
-	public void setACCEPTER_ID(DAOUser ACCEPTER_ID) {
-		this.ACCEPTER_ID = ACCEPTER_ID;
+	public void setAccepter_id(DAOUser accepter_id) {
+		this.accepter_id = accepter_id;
 	}
 
-	@Column(columnDefinition= "VARCHAR2(20 CHAR) " + 
+	@Column(name="STATUS",columnDefinition= "VARCHAR2(20 CHAR) " + 
 			"CONSTRAINT manage_coperate_nn  NOT NULL")
 	private String STATUS;
 
@@ -54,11 +58,8 @@ public class DAOManageCoperate {
 		this.STATUS = STATUS;
 	}
 
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private String DATETIME;
-
-	public String getDATETIME() {
-		return DATETIME;
-	}
+	@Column(name ="DATETIME")
+	@CreationTimestamp
+    private LocalDateTime createdAt;
 
 }

@@ -1,7 +1,11 @@
 package com.boss.backend.model;
 
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -11,55 +15,52 @@ public class DAOComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMMENT_ID_SEQ")
-	private long COMMENT_ID;
+	private long comment_id;
 
-	public long getCOMMENT_ID() {
-		return COMMENT_ID;
+	public long getComment_id() {
+		return comment_id;
 	}
 
-	public void setCOMMENT_ID(long COMMENT_ID) {
-		this.COMMENT_ID = COMMENT_ID;
+	public void setComment_id(long comment_id) {
+		this.comment_id = comment_id;
 	}
 	
-	@Column(columnDefinition = "VARCHAR2(1000 CHAR) ")
-	private String COMMENT_DETAIL;
+	@Column(name="COMMENT_DETAIL",columnDefinition = "VARCHAR2(1000 CHAR) ")
+	private String comment_detail;
 	
-	public String getCOMMENT_DETAIL() {
-		return COMMENT_DETAIL;
+	public String getComment_detail() {
+		return comment_detail;
 	}
 
-	public void setCOMMENT_DETAIL(String COMMENT_DETAIL) {
-		this.COMMENT_DETAIL = COMMENT_DETAIL;
+	public void setComment_detail(String comment_detail) {
+		this.comment_detail = comment_detail;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "COMMENT_OWNER", referencedColumnName = "USER_ID", columnDefinition = "integer")
-	private DAOUser COMMENT_OWNER;
-	public DAOUser getCOMMENT_OWNER() {
-		return COMMENT_OWNER;
+	@JoinColumn(name = "COMMENT_OWNER", referencedColumnName = "user_id", columnDefinition = "integer")
+	private DAOUser comment_owner;
+	public DAOUser getComment_owner() {
+		return comment_owner;
 	}
 
-	public void setCOMMENT_OWNER(DAOUser COMMENT_OWNER) {
-		this.COMMENT_OWNER = COMMENT_OWNER;
+	public void setComment_owner(DAOUser comment_owner) {
+		this.comment_owner = comment_owner;
 	}
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "SUB_TASK_ID", referencedColumnName = "SUB_TASK_ID", columnDefinition = "integer")
-	private DAOSubTask SUB_TASK_ID;
-	public DAOSubTask getSUB_TASK_ID() {
-		return SUB_TASK_ID;
+	@JoinColumn(name = "SUB_TASK_ID", referencedColumnName = "sub_task_id", columnDefinition = "integer")
+	private DAOSubTask sub_task_id;
+	public DAOSubTask getSub_task_id() {
+		return sub_task_id;
 	}
 
-	public void setSUB_TASK_ID(DAOSubTask SUB_TASK_ID) {
-		this.SUB_TASK_ID = SUB_TASK_ID;
+	public void setSub_task_id(DAOSubTask sub_task_id) {
+		this.sub_task_id = sub_task_id;
 	}
 	
 	
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private String DATETIME;
-	
-	public String getDATETIME() {
-		return DATETIME;
-	}
+	@Column(name ="DATETIME")
+	@CreationTimestamp
+    private LocalDateTime createdAt;
 }

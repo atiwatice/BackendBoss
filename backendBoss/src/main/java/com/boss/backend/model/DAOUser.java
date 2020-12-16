@@ -28,7 +28,7 @@ public class DAOUser {
 		this.user_id = user_id;
 	}
 
-	@Column(columnDefinition = "VARCHAR2(40 CHAR) " + "CONSTRAINT users_username_nn_unique NOT NULL UNIQUE")
+	@Column(name="USERNAME",columnDefinition = "VARCHAR2(40 CHAR) " + "CONSTRAINT users_username_nn_unique NOT NULL UNIQUE")
 	private String username;
 
 	public String getUsername() {
@@ -39,7 +39,7 @@ public class DAOUser {
 		this.username = username;
 	}
 
-	@Column(columnDefinition = "VARCHAR2(100 CHAR) " + "CONSTRAINT users_password_nn NOT NULL")
+	@Column(name="PASSWORD",columnDefinition = "VARCHAR2(100 CHAR) " + "CONSTRAINT users_password_nn NOT NULL")
 	@JsonIgnore
 	private String password;
 
@@ -52,7 +52,7 @@ public class DAOUser {
 	}
 
 	
-	@Column(columnDefinition = "VARCHAR2(20 CHAR) " + "CONSTRAINT users_firstname_nn NOT NULL")
+	@Column(name="FIRSTNAME",columnDefinition = "VARCHAR2(20 CHAR) " + "CONSTRAINT users_firstname_nn NOT NULL")
 	private String firstname;
 	
 	public String getFirstname() {
@@ -64,7 +64,7 @@ public class DAOUser {
 	}
 	
 	
-	@Column(columnDefinition = "VARCHAR2(20 CHAR) " + "CONSTRAINT users_lastname_nn NOT NULL")
+	@Column(name="LASTNAME",columnDefinition = "VARCHAR2(20 CHAR) " + "CONSTRAINT users_lastname_nn NOT NULL")
 	private String lastname;
 	
 	public String getLastname() {
@@ -76,7 +76,7 @@ public class DAOUser {
 	}
 	
 	
-	@Column(columnDefinition = "VARCHAR2(500 CHAR) " + "CONSTRAINT users_address_nn NOT NULL")
+	@Column(name="ADDRESS",columnDefinition = "VARCHAR2(500 CHAR) " + "CONSTRAINT users_address_nn NOT NULL")
 	private String address;
 	
 	public String getAddress() {
@@ -88,7 +88,7 @@ public class DAOUser {
 	}
 	
 
-	@Column(columnDefinition = "VARCHAR2(200 CHAR) " + "CONSTRAINT users_email_nn_unique NOT NULL UNIQUE")
+	@Column(name="EMAIL",columnDefinition = "VARCHAR2(200 CHAR) " + "CONSTRAINT users_email_nn_unique NOT NULL UNIQUE")
 	private String email;
 	
 	public String getEmail() {
@@ -100,7 +100,7 @@ public class DAOUser {
 	}
 	
 	
-	@Column(columnDefinition = "VARCHAR2(10 CHAR) " + "CONSTRAINT users_mobile_no_nn_unique NOT NULL UNIQUE")
+	@Column(name="MOBILE_NO",columnDefinition = "VARCHAR2(10 CHAR) " + "CONSTRAINT users_mobile_no_nn_unique NOT NULL UNIQUE")
 	private String mobile_no;
 	
 	public String getMobile_no() {
@@ -118,30 +118,30 @@ public class DAOUser {
 	
 
 	@ManyToOne
-	@JoinColumn(name="COMPANY_ID", referencedColumnName = "COMPANY_ID",columnDefinition="integer")
-	private DAOCompany COMPANY_ID;
+	@JoinColumn(name="COMPANY_ID", referencedColumnName = "company_id",columnDefinition="integer")
+	private DAOCompany company_id;
 	
-	public DAOCompany getCOMPANY_ID() {
-		return COMPANY_ID;
+	public DAOCompany getCompany_id() {
+		return company_id;
 	}
 
-	public void setCompany_id(DAOCompany COMPANY_ID) {
-		this.COMPANY_ID = COMPANY_ID;
+	public void setCompany_id(DAOCompany company_id) {
+		this.company_id = company_id;
 	}
 
 	
-	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="REQUESTER_ID", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="requester_id", cascade = CascadeType.ALL)
 	private List<DAOManageCoperate> DAOManageCoperate_Requester;
 	
-	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="ACCEPTER_ID", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="accepter_id", cascade = CascadeType.ALL)
 	private List<DAOManageCoperate> DAOManageCoperate_Accepter;
 
-	@OneToMany(targetEntity=DAOTask.class,mappedBy="TASK_OWNER_ID", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOTask.class,mappedBy="task_owner_id", cascade = CascadeType.ALL)
 	private List<DAOTask> DAOTask_Task_owner;
 	
-	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="ASSIGN_TO", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="assign_to", cascade = CascadeType.ALL)
 	private List<DAOSubTask> DAOSubTask_Assign_to;
 	
-	@OneToMany(targetEntity=DAOComment.class,mappedBy="COMMENT_OWNER", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity=DAOComment.class,mappedBy="comment_owner", cascade = CascadeType.ALL)
 	private List<DAOComment> DAOComment_Comment_Owner;
 }
