@@ -20,10 +20,10 @@ public class UserDTO {
 		this.password = password;
 	}
 	
-	private long user_id;
+	private long userId;
 	
-	public long getUser_id() {
-		return user_id;
+	public long getUserId() {
+		return userId;
 	}
 	
 	private String firstname;
@@ -65,24 +65,24 @@ public class UserDTO {
 		this.email = email;
 	}
 	
-	private String mobile_no;
+	private String mobileNo;
 	
-	public String getMobile_no() {
-		return mobile_no;
+	public String getMobileNo() {
+		return mobileNo;
 	}
 
-	public void setMobile_no(String mobile_no) {
-		this.mobile_no = mobile_no;
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 	
-	private DAOCompany COMPANY_ID;
+	private DAOCompany companyId;
 	
-	public DAOCompany getCOMPANY_ID() {
-		return COMPANY_ID;
+	public DAOCompany getCompanyId() {
+		return companyId;
 	}
 
-	public void setCompany_id(DAOCompany COMPANY_ID) {
-		this.COMPANY_ID = COMPANY_ID;
+	public void setCompanyId(DAOCompany companyId) {
+		this.companyId = companyId;
 	}
 
 }

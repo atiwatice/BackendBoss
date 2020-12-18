@@ -11,50 +11,50 @@ public class DAOTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "TASK_ID_SEQ")
-	private long task_id;
+	private long taskId;
 
-	public long getTask_id() {
-		return task_id;
+	public long getTaskId() {
+		return taskId;
 	}
 
-	public void setTask_id(long task_id) {
-		this.task_id = task_id;
+	public void setTaskId(long taskId) {
+		this.taskId = taskId;
 	}
 	
 	
 	@Column(name="TASK_NAME",columnDefinition = "VARCHAR2(100 CHAR) " + "CONSTRAINT task_task_name_nn NOT NULL")
-	private String task_name;
+	private String taskName;
 	
-	public String getTask_name() {
-		return task_name;
+	public String getTaskName() {
+		return taskName;
 	}
 
-	public void setTask_name(String task_name) {
-		this.task_name = task_name;
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
 	}
 	
 	
 	@Column(name="START_DATE",columnDefinition = "DATE " + "CONSTRAINT task_start_date_nn NOT NULL")
-	private String start_date;
+	private String startDate;
 	
-	public String getStart_date() {
-		return start_date;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 	
 	
 	@Column(name="END_DATE",columnDefinition = "DATE " + "CONSTRAINT task_end_date_nn NOT NULL")
-	private String end_date;
+	private String endDate;
 	
-	public String getEnd_date() {
-		return end_date;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 	
 	
@@ -71,17 +71,17 @@ public class DAOTask {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "TASK_OWNER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
-	private DAOUser task_owner_id;
-	public DAOUser getTask_owner_id() {
-		return task_owner_id;
+	@JoinColumn(name = "TASK_OWNER_ID", referencedColumnName = "userId", columnDefinition = "integer")
+	private DAOUser taskOwnerId;
+	public DAOUser getTaskOwnerId() {
+		return taskOwnerId;
 	}
 
-	public void setTask_owner_id(DAOUser task_owner_id) {
-		this.task_owner_id = task_owner_id;
+	public void setTaskOwnerId(DAOUser taskOwnerId) {
+		this.taskOwnerId = taskOwnerId;
 	}
 	
-	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="task_id", cascade = CascadeType.ALL)
-	private List<DAOSubTask> DAOSubTask_Task_id;
+	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="taskId", cascade = CascadeType.ALL)
+	private List<DAOSubTask> DAOSubTaskTaskId;
 	
 }

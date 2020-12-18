@@ -15,48 +15,49 @@ public class DAOComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMMENT_ID_SEQ")
-	private long comment_id;
+	private long commentId;
 
-	public long getComment_id() {
-		return comment_id;
+	public long getCommentId() {
+		return commentId;
 	}
 
-	public void setComment_id(long comment_id) {
-		this.comment_id = comment_id;
+	public void setCommentId(long commentId) {
+		this.commentId = commentId;
 	}
+
 	
 	@Column(name="COMMENT_DETAIL",columnDefinition = "VARCHAR2(1000 CHAR) ")
-	private String comment_detail;
+	private String commentDetail;
 	
-	public String getComment_detail() {
-		return comment_detail;
+	public String getCommentDetail() {
+		return commentDetail;
 	}
 
-	public void setComment_detail(String comment_detail) {
-		this.comment_detail = comment_detail;
+	public void setCommentDetail(String commentDetail) {
+		this.commentDetail = commentDetail;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "COMMENT_OWNER", referencedColumnName = "user_id", columnDefinition = "integer")
-	private DAOUser comment_owner;
-	public DAOUser getComment_owner() {
-		return comment_owner;
+	@JoinColumn(name = "COMMENT_OWNER", referencedColumnName = "userId", columnDefinition = "integer")
+	private DAOUser commentOwner;
+	public DAOUser getCommentOwner() {
+		return commentOwner;
 	}
 
-	public void setComment_owner(DAOUser comment_owner) {
-		this.comment_owner = comment_owner;
+	public void setCommentOwner(DAOUser commentOwner) {
+		this.commentOwner = commentOwner;
 	}
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "SUB_TASK_ID", referencedColumnName = "sub_task_id", columnDefinition = "integer")
-	private DAOSubTask sub_task_id;
-	public DAOSubTask getSub_task_id() {
-		return sub_task_id;
+	@JoinColumn(name = "SUB_TASK_ID", referencedColumnName = "subTaskId", columnDefinition = "integer")
+	private DAOSubTask subTaskId;
+	public DAOSubTask getSubTaskId() {
+		return subTaskId;
 	}
 
-	public void setSub_task_id(DAOSubTask sub_task_id) {
-		this.sub_task_id = sub_task_id;
+	public void setSubTaskId(DAOSubTask subTaskId) {
+		this.subTaskId = subTaskId;
 	}
 	
 	

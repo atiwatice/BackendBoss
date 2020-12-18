@@ -29,8 +29,13 @@ public class UserService {
 	}
 	
 	public Optional<DAOUser> retrieveUser(String username){
-		return Optional.of(userDao.findByUsername(username));
+		return Optional.ofNullable(userDao.findByUsername(username));
 	}
+	
+	public Optional<DAOUser> findUserId(int userId){
+		return Optional.ofNullable(userDao.findByUserId(userId));
+	}
+	
 	
 	public DAOUser updateUser(int id, UserDTO user){
 		DAOUser usernameIn = userDao.findById(id);
@@ -50,10 +55,10 @@ public class UserService {
 			usernameIn.setAddress(user.getAddress());
 		if (user.getEmail() != null)
 			usernameIn.setEmail(user.getEmail());
-		if (user.getMobile_no() != null)
-			usernameIn.setMobile_no(user.getMobile_no());
-		if (user.getCOMPANY_ID() != null)
-			usernameIn.setCompany_id(user.getCOMPANY_ID());
+		if (user.getMobileNo() != null)
+			usernameIn.setMobileNo(user.getMobileNo());
+		if (user.getCompanyId() != null)
+			usernameIn.setCompanyId(user.getCompanyId());
 		
 		
 		return userDao.save(usernameIn);

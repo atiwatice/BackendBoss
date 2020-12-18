@@ -13,37 +13,37 @@ public class DAOManageCoperate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "MANAGE_COPERATE_ID_SEQ")
-	private long manage_coperate_id;
+	private long manageCoperateId;
 
-	public long getManage_coperate_id() {
-		return manage_coperate_id;
+	public long getManageCoperateId() {
+		return manageCoperateId;
 	}
 
-	public void setManage_coperate_id(long manage_coperate_id) {
-		this.manage_coperate_id = manage_coperate_id;
+	public void setManageCoperateId(long manageCoperateId) {
+		this.manageCoperateId = manageCoperateId;
 	}
 
 
 	@ManyToOne
-	@JoinColumn(name = "REQUESTER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
-	private DAOUser requester_id;
-	public DAOUser getRequester_id() {
-		return requester_id;
+	@JoinColumn(name = "REQUESTER_ID", referencedColumnName = "userId", columnDefinition = "integer")
+	private DAOUser requesterId;
+	public DAOUser getRequesterId() {
+		return requesterId;
 	}
 
-	public void setRequester_id(DAOUser requester_id) {
-		this.requester_id = requester_id;
+	public void setRequesterId(DAOUser requesterId) {
+		this.requesterId = requesterId;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "ACCEPTER_ID", referencedColumnName = "user_id", columnDefinition = "integer")
-	private DAOUser accepter_id;
-	public DAOUser getAccepter_id() {
-		return accepter_id;
+	@JoinColumn(name = "ACCEPTER_ID", referencedColumnName = "userId", columnDefinition = "integer")
+	private DAOUser accepterId;
+	public DAOUser getAccepterId() {
+		return accepterId;
 	}
 
-	public void setAccepter_id(DAOUser accepter_id) {
-		this.accepter_id = accepter_id;
+	public void setAccepterId(DAOUser accepterId) {
+		this.accepterId = accepterId;
 	}
 
 	@Column(name="STATUS",columnDefinition= "VARCHAR2(20 CHAR) " + 

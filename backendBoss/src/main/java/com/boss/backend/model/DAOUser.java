@@ -18,14 +18,14 @@ public class DAOUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "USER_ID_SEQ")
-	private int user_id;
+	private int userId;
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Column(name="USERNAME",columnDefinition = "VARCHAR2(40 CHAR) " + "CONSTRAINT users_username_nn_unique NOT NULL UNIQUE")
@@ -101,14 +101,14 @@ public class DAOUser {
 	
 	
 	@Column(name="MOBILE_NO",columnDefinition = "VARCHAR2(10 CHAR) " + "CONSTRAINT users_mobile_no_nn_unique NOT NULL UNIQUE")
-	private String mobile_no;
+	private String mobileNo;
 	
-	public String getMobile_no() {
-		return mobile_no;
+	public String getMobileNo() {
+		return mobileNo;
 	}
 
-	public void setMobile_no(String mobile_no) {
-		this.mobile_no = mobile_no;
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 	
 	@Column(name ="DATETIME")
@@ -118,30 +118,30 @@ public class DAOUser {
 	
 
 	@ManyToOne
-	@JoinColumn(name="COMPANY_ID", referencedColumnName = "company_id",columnDefinition="integer")
-	private DAOCompany company_id;
+	@JoinColumn(name="COMPANY_ID", referencedColumnName = "companyId",columnDefinition="integer")
+	private DAOCompany companyId;
 	
-	public DAOCompany getCompany_id() {
-		return company_id;
+	public DAOCompany getCompanyId() {
+		return companyId;
 	}
 
-	public void setCompany_id(DAOCompany company_id) {
-		this.company_id = company_id;
+	public void setCompanyId(DAOCompany companyId) {
+		this.companyId = companyId;
 	}
 
 	
-	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="requester_id", cascade = CascadeType.ALL)
-	private List<DAOManageCoperate> DAOManageCoperate_Requester;
+	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="requesterId", cascade = CascadeType.ALL)
+	private List<DAOManageCoperate> DAOManageCoperateRequester;
 	
-	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="accepter_id", cascade = CascadeType.ALL)
-	private List<DAOManageCoperate> DAOManageCoperate_Accepter;
+	@OneToMany(targetEntity=DAOManageCoperate.class,mappedBy="accepterId", cascade = CascadeType.ALL)
+	private List<DAOManageCoperate> DAOManageCoperateAccepter;
 
-	@OneToMany(targetEntity=DAOTask.class,mappedBy="task_owner_id", cascade = CascadeType.ALL)
-	private List<DAOTask> DAOTask_Task_owner;
+	@OneToMany(targetEntity=DAOTask.class,mappedBy="taskOwnerId", cascade = CascadeType.ALL)
+	private List<DAOTask> DAOTaskTaskowner;
 	
-	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="assign_to", cascade = CascadeType.ALL)
-	private List<DAOSubTask> DAOSubTask_Assign_to;
+	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="assignTo", cascade = CascadeType.ALL)
+	private List<DAOSubTask> DAOSubTaskAssignto;
 	
-	@OneToMany(targetEntity=DAOComment.class,mappedBy="comment_owner", cascade = CascadeType.ALL)
-	private List<DAOComment> DAOComment_Comment_Owner;
+	@OneToMany(targetEntity=DAOComment.class,mappedBy="commentOwner", cascade = CascadeType.ALL)
+	private List<DAOComment> DAOCommentCommentOwner;
 }

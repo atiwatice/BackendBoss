@@ -17,35 +17,35 @@ public class DAOCompany {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMPANY_ID_SEQ")
-	private long company_id;
+	private long companyId;
 	
-	public long getCompany_id() {
-        return company_id;
+	public long getCompanyId() {
+        return companyId;
     }
 
 	
-    @OneToMany(targetEntity=DAOUser.class,mappedBy="company_id", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity=DAOUser.class,mappedBy="companyId", cascade = CascadeType.ALL)
     private List<DAOUser> DAOUsers;
     
 	@Column(name="COMPANY_NAME",columnDefinition= "VARCHAR2(20 CHAR) " + 
 			"CONSTRAINT company_company_name_nn NOT NULL")
-	private String company_name;
-	public String getCompany_name() {
-		return company_name;
+	private String companyName;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setCompany_name(String company_name) {
-		this.company_name = company_name;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	
 	@Column(name="COMPANY_DETAIL",columnDefinition= "VARCHAR2(100 CHAR)")
-	private String company_detail;
+	private String companyDetail;
 	
-	public String getCompany_detail() {
-		return company_detail;
+	public String getCompanyDetail() {
+		return companyDetail;
 	}
 
-	public void setCompany_detail(String company_detail) {
-		this.company_detail = company_detail;
+	public void setCompanyDetail(String companyDetail) {
+		this.companyDetail = companyDetail;
 	}
 	
 	
