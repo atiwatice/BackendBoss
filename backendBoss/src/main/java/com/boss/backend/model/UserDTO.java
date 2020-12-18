@@ -20,6 +20,12 @@ public class UserDTO {
 		this.password = password;
 	}
 	
+	private long user_id;
+	
+	public long getUser_id() {
+		return user_id;
+	}
+	
 	private String firstname;
 	
 	public String getFirstname() {

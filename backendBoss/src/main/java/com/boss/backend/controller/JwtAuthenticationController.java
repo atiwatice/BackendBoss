@@ -59,12 +59,7 @@ public class JwtAuthenticationController {
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
 		DAOUser username = userDao.findByUsername(user.getUsername());
 		JSONObject responseJson = new JSONObject();
-		System.out.println("--------");
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-
-
-		System.out.println("--------");
+		
 		if (username!=null) {
 
 	        responseJson.put("status", "User with that username already exists.");

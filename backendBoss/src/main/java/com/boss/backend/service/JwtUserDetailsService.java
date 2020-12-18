@@ -23,7 +23,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("test1");
+
 		DAOUser user = userDao.findByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("User not found with username: " + username);
@@ -31,7 +31,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				new ArrayList<>());
 	}
-	
+
 	public DAOUser save(UserDTO user) {
 		DAOUser newUser = new DAOUser();
 		newUser.setUsername(user.getUsername());
@@ -44,4 +44,5 @@ public class JwtUserDetailsService implements UserDetailsService {
 		return userDao.save(newUser);
 	}
 
+	
 }

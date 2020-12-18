@@ -18,13 +18,13 @@ public class DAOUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "USER_ID_SEQ")
-	private long user_id;
+	private int user_id;
 
-	public long getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(long user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
