@@ -48,14 +48,14 @@ public class DAOManageCoperate {
 
 	@Column(name="STATUS",columnDefinition= "VARCHAR2(20 CHAR) " + 
 			"CONSTRAINT manage_coperate_nn  NOT NULL")
-	private String STATUS;
+	private String status;
 
-	public String getSTATUS() {
-		return STATUS;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setSTATUS(String STATUS) {
-		this.STATUS = STATUS;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Column(name ="DATETIME")
