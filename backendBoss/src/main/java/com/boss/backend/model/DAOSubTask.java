@@ -13,13 +13,13 @@ public class DAOSubTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "SUB_TASK_ID_SEQ")
-	private long subTaskId;
+	private int subTaskId;
 
-	public long getSubTaskId() {
+	public int getSubTaskId() {
 		return subTaskId;
 	}
 
-	public void setSubTaskId(long subTaskId) {
+	public void setSubTaskId(int subTaskId) {
 		this.subTaskId = subTaskId;
 	}
 	

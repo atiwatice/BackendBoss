@@ -17,9 +17,9 @@ public class DAOCompany {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMPANY_ID_SEQ")
-	private long companyId;
+	private int companyId;
 	
-	public long getCompanyId() {
+	public int getCompanyId() {
         return companyId;
     }
 
@@ -28,7 +28,7 @@ public class DAOCompany {
     private List<DAOUser> DAOUsers;
     
 	@Column(name="COMPANY_NAME",columnDefinition= "VARCHAR2(20 CHAR) " + 
-			"CONSTRAINT company_company_name_nn NOT NULL")
+			"CONSTRAINT company_company_name_nn NOT NULL UNIQUE")
 	private String companyName;
 	public String getCompanyName() {
 		return companyName;

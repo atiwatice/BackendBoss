@@ -13,7 +13,7 @@ import com.boss.backend.model.DAOCompany;
 public interface CompanyDao extends CrudRepository<DAOCompany, Integer>{
 	DAOCompany findByCompanyName(String companyName);
 	List<DAOCompany> findAll();
-	DAOCompany findById(int id);
+	DAOCompany findByCompanyId(int companyId);
 	void deleteById(int id);
 
 }

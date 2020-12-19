@@ -13,13 +13,13 @@ public class DAOManageCoperate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "MANAGE_COPERATE_ID_SEQ")
-	private long manageCoperateId;
+	private int manageCoperateId;
 
-	public long getManageCoperateId() {
+	public int getManageCoperateId() {
 		return manageCoperateId;
 	}
 
-	public void setManageCoperateId(long manageCoperateId) {
+	public void setManageCoperateId(int manageCoperateId) {
 		this.manageCoperateId = manageCoperateId;
 	}
 

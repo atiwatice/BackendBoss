@@ -11,13 +11,13 @@ public class DAOTask {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "TASK_ID_SEQ")
-	private long taskId;
+	private int taskId;
 
-	public long getTaskId() {
+	public int getTaskId() {
 		return taskId;
 	}
 
-	public void setTaskId(long taskId) {
+	public void setTaskId(int taskId) {
 		this.taskId = taskId;
 	}
 	

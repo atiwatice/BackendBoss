@@ -15,13 +15,13 @@ public class DAOComment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 	@SequenceGenerator(name = "SEQ", sequenceName = "COMMENT_ID_SEQ")
-	private long commentId;
+	private int commentId;
 
-	public long getCommentId() {
+	public int getCommentId() {
 		return commentId;
 	}
 
-	public void setCommentId(long commentId) {
+	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
 

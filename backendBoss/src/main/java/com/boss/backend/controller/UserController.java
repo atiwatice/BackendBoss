@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.boss.backend.dao.UserDao;
 import com.boss.backend.model.DAOUser;
 import com.boss.backend.model.UserDTO;
 import com.boss.backend.service.UserService;
@@ -22,16 +21,10 @@ import net.minidev.json.JSONObject;
 
 @RestController
 public class UserController {
-	@Autowired
-	private UserDao userDao;
 
 	@Autowired
 	UserService userService;
 
-	@GetMapping("/hello")
-	ResponseEntity<String> hello() {
-		return new ResponseEntity<>("Hello World!", HttpStatus.BAD_REQUEST);
-	}
 
 	// Get All user
 	@GetMapping("/getUsers")
@@ -76,7 +69,7 @@ public class UserController {
 			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
 		}
 
-		userDao.deleteById(id);
+		userService.deleteUser(id);
 		responseJson.put("status", "UserId " + id + " is deleted");
 		return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 	}

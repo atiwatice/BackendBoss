@@ -64,4 +64,10 @@ public class UserService {
 		return userDao.save(usernameIn);
 	}
 	
+	public void deleteUser(int id) {
+		userDao.deleteById(id);
+	}
+	
+	
+	
 }
