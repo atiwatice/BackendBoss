@@ -1,5 +1,7 @@
 package com.boss.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ManageCoperateDTO {
 	private DAOUser requesterId;
 
@@ -30,4 +32,17 @@ public class ManageCoperateDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	@JsonProperty("requesterId")
+	private void unpackRequester(Integer userId) {
+	    this.requesterId = new DAOUser();
+	    requesterId.setUserId(userId);
+	}
+	
+	@JsonProperty("accepterId")
+	private void unpackAccepter(Integer userId) {
+	    this.accepterId = new DAOUser();
+	    accepterId.setUserId(userId);
+	}
+	
 }

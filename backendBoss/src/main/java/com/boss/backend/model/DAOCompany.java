@@ -22,6 +22,10 @@ public class DAOCompany {
 	public int getCompanyId() {
         return companyId;
     }
+	
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 
 	
     @OneToMany(targetEntity=DAOUser.class,mappedBy="companyId", cascade = CascadeType.ALL)

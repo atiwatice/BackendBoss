@@ -1,5 +1,7 @@
 package com.boss.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserDTO {
 	private String username;
 	private String password;
@@ -83,6 +85,12 @@ public class UserDTO {
 
 	public void setCompanyId(DAOCompany companyId) {
 		this.companyId = companyId;
+	}
+	
+	@JsonProperty("companyId")
+	private void unpackAccepter(Integer companyid) {
+	    this.companyId = new DAOCompany();
+	    companyId.setCompanyId(companyid);
 	}
 
 }
