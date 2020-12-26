@@ -62,25 +62,25 @@ public class ManageCoperateController {
 	// Get the getAllCoperate WAIT_CONFIRM
 	@GetMapping("/getAllWaitConfirm/{coperateId}")
 	public List<DAOManageCoperate> getWaitConfirm(@PathVariable(value = "coperateId") int coperateId) {
-		return manageCoperateService.findWaitConfirm(coperateId, coperateId);
+		return manageCoperateService.findWaitConfirm(coperateId);
 	}
 	
 	//confirm request
-	@RequestMapping(value = "/confirmRequest/{ownerId}/{confirmUser}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateStatusCoperate(@PathVariable(value = "ownerId") int ownerId, @PathVariable(value = "confirmUser") String confirmUser) {
-		DAOManageCoperate manageCoperate = manageCoperateService.updateStatusCoperate(ownerId, confirmUser);
+	@RequestMapping(value = "/confirmRequest/{ownerId}/{requestUser}", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateStatusCoperate(@PathVariable(value = "ownerId") int ownerId, @PathVariable(value = "requestUser") String requestUser) {
+		DAOManageCoperate manageCoperate = manageCoperateService.updateStatusCoperate(ownerId, requestUser);
 		JSONObject responseJson = new JSONObject();
 		
 		if(manageCoperate == null) {
 			responseJson.put("status", "Not found this request");
 			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
 		}
-		responseJson.put("status", "User "+confirmUser+" is accepted.");
+		responseJson.put("status", "User "+requestUser+" is accepted.");
 		return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 	}
 	
 	//delete request
-	@DeleteMapping("/deleteUser/{ownerId}/{confirmUser}")
+	@DeleteMapping("/deleteRequest/{ownerId}/{confirmUser}")
 	public ResponseEntity<?> cancelRequest(@PathVariable(value = "ownerId") int ownerId, @PathVariable(value = "confirmUser") String confirmUser) {
 		DAOManageCoperate manageCoperate = manageCoperateService.cancelRequest(ownerId, confirmUser);
 		JSONObject responseJson = new JSONObject();
@@ -89,9 +89,23 @@ public class ManageCoperateController {
 			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
 		}
 		
-		responseJson.put("status", "UserId " + confirmUser + " is deleted");
+		responseJson.put("status", "Request from " + confirmUser + " is deleted");
 		return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 	}
+	
+	//delete request
+		@DeleteMapping("/deleteCoperate/{ownerId}/{confirmUser}")
+		public ResponseEntity<?> deleteCoperate(@PathVariable(value = "ownerId") int ownerId, @PathVariable(value = "confirmUser") String confirmUser) {
+			DAOManageCoperate manageCoperate = manageCoperateService.deleteCoperate(ownerId, confirmUser);
+			JSONObject responseJson = new JSONObject();
+			if(manageCoperate == null) {
+				responseJson.put("status", "Not found this request");
+				return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			}
+			
+			responseJson.put("status", "Request from " + confirmUser + " is deleted");
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
+		}
 	
 	
 	
