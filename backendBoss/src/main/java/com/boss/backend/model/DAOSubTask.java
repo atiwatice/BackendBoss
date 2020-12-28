@@ -1,6 +1,7 @@
 package com.boss.backend.model;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -37,38 +38,38 @@ public class DAOSubTask {
 	
 	
 	@Column(name="START_DATE",columnDefinition = "DATE " + "CONSTRAINT subtask_start_date_nn NOT NULL")
-	private String startDate;
+	private Date startDate;
 	
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
 	
 	@Column(name="END_DATE",columnDefinition = "DATE " + "CONSTRAINT subtask_end_date_nn NOT NULL")
-	private String endDate;
+	private Date endDate;
 	
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	
 	
 	@Column(name="PERCENT",columnDefinition= "NUMBER " + 
 			"CONSTRAINT subtask_percent_nn  NOT NULL")
-	private String percent;
+	private int percent;
 
-	public String getPercent() {
+	public int getPercent() {
 		return percent;
 	}
 
-	public void setPercent(String percent) {
+	public void setPercent(int percent) {
 		this.percent = percent;
 	}
 	
@@ -76,7 +77,7 @@ public class DAOSubTask {
 	@ManyToOne
 	@JoinColumn(name = "ASSIGN_TO", referencedColumnName = "userId", columnDefinition = "integer")
 	private DAOUser assignTo;
-	public DAOUser getAssignToo() {
+	public DAOUser getAssignTo() {
 		return assignTo;
 	}
 

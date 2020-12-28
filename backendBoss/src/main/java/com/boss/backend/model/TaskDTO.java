@@ -1,5 +1,9 @@
 package com.boss.backend.model;
 
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class TaskDTO {
 	private String taskName;
 
@@ -50,4 +54,12 @@ public class TaskDTO {
 	public void setTaskOwnerId(DAOUser taskOwnerId) {
 		this.taskOwnerId = taskOwnerId;
 	}
+	
+	@JsonProperty("taskOwnerId")
+	private void unpackTaskOwner(Integer userId) {
+	    this.taskOwnerId = new DAOUser();
+	    taskOwnerId.setUserId(userId);
+	}
+	
+	
 }

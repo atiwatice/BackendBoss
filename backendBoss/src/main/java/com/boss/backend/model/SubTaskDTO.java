@@ -1,5 +1,7 @@
 package com.boss.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SubTaskDTO {
 	private String subTaskName;
 
@@ -31,19 +33,19 @@ public class SubTaskDTO {
 		this.endDate = endDate;
 	}
 
-	private String percent;
+	private int percent;
 
-	public String getPercent() {
+	public int getPercent() {
 		return percent;
 	}
 
-	public void setPercent(String percent) {
+	public void setPercent(int percent) {
 		this.percent = percent;
 	}
 
 	private DAOUser assignTo;
 
-	public DAOUser getAssignToo() {
+	public DAOUser getAssignTo() {
 		return assignTo;
 	}
 
@@ -60,4 +62,17 @@ public class SubTaskDTO {
 	public void setTaskId(DAOTask taskId) {
 		this.taskId = taskId;
 	}
+	
+	@JsonProperty("assignTo")
+	private void unpackAssignTo(Integer userId) {
+	    this.assignTo = new DAOUser();
+	    assignTo.setUserId(userId);
+	}
+	
+	@JsonProperty("taskId")
+	private void unpackTaskId(Integer taskIdd) {
+	    this.taskId = new DAOTask();
+	    taskId.setTaskId(taskIdd);
+	}
+	
 }

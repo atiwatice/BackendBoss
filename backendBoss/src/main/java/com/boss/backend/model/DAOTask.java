@@ -1,5 +1,6 @@
 package com.boss.backend.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -35,25 +36,25 @@ public class DAOTask {
 	
 	
 	@Column(name="START_DATE",columnDefinition = "DATE " + "CONSTRAINT task_start_date_nn NOT NULL")
-	private String startDate;
+	private Date startDate;
 	
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	
 	
 	@Column(name="END_DATE",columnDefinition = "DATE " + "CONSTRAINT task_end_date_nn NOT NULL")
-	private String endDate;
+	private Date endDate;
 	
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	

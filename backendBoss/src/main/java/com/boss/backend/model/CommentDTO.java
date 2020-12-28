@@ -1,5 +1,7 @@
 package com.boss.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CommentDTO {
 	private String commentDetail;
 
@@ -29,5 +31,17 @@ public class CommentDTO {
 
 	public void setSubTaskId(DAOSubTask subTaskId) {
 		this.subTaskId = subTaskId;
+	}
+	
+	@JsonProperty("commentOwner")
+	private void unpackCommentOwner(Integer userId) {
+	    this.commentOwner = new DAOUser();
+	    commentOwner.setUserId(userId);
+	}
+	
+	@JsonProperty("subTaskId")
+	private void unpackTaskId(Integer subTaskIdd) {
+	    this.subTaskId = new DAOSubTask();
+	    subTaskId.setSubTaskId(subTaskIdd);
 	}
 }
