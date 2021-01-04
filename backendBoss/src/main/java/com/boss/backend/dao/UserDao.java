@@ -16,5 +16,7 @@ public interface UserDao extends CrudRepository<DAOUser, Integer>{
 	List<DAOUser> findAll();
 	DAOUser findById(int id);
 	void deleteById(int id);
+	DAOUser findByEmail(String email);
+	DAOUser findByMobileNo(String mobileNo);
 }
 

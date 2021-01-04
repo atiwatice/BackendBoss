@@ -27,8 +27,8 @@ import com.boss.backend.service.JwtUserDetailsService;
 import net.minidev.json.JSONObject;
 
 
+@CrossOrigin(origins = "http://localhost:3005", maxAge = 3600)
 @RestController
-@CrossOrigin
 public class JwtAuthenticationController {
 	@Autowired
 	private UserDao userDao;
@@ -58,14 +58,27 @@ public class JwtAuthenticationController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
 		DAOUser username = userDao.findByUsername(user.getUsername());
+		DAOUser email = userDao.findByEmail(user.getEmail());
+		DAOUser mobile = userDao.findByMobileNo(user.getMobileNo());
 		JSONObject responseJson = new JSONObject();
 		
 		if (username!=null) {
 
-	        responseJson.put("status", "User with that username already exists.");
+	        responseJson.put("status", "Username already exists.");
 
-	        return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+	        return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 	    }
+		else if(email!=null) {
+			responseJson.put("status", "Email already exists.");
+
+	        return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
+		}
+		else if(mobile!=null) {
+			responseJson.put("status", "Mobile no already exists.");
+
+	        return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
+		}
+		
 		
 	    responseJson.put("status", "User created.");
 	    userDetailsService.save(user);
