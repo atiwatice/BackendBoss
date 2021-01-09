@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.boss.backend.model.DAOTask;
 import com.boss.backend.model.TaskDTO;
+import com.boss.backend.model.TaskPercentDTO;
 import com.boss.backend.service.TaskService;
 import com.boss.backend.service.UserService;
 
@@ -41,11 +42,11 @@ public class TaskController {
 
 		try {
 			taskService.save(task);
-			responseJson.put("status", "Task is Updated");
+			responseJson.put("status", "Task is Created");
 			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		} catch (ParseException e) {
-			responseJson.put("status", "Update task error");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			responseJson.put("status", "Created task error");
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 	}
@@ -57,7 +58,7 @@ public class TaskController {
 
 		if (updateTaskNew == null) {
 			responseJson.put("status", "Not found this Task");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 		responseJson.put("status", "Update complete");
@@ -70,7 +71,7 @@ public class TaskController {
 		JSONObject responseJson = new JSONObject();
 		if (!CheckTaskId.isPresent()) {
 			responseJson.put("status", "Not Found this Task");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 		taskService.deleteTask(id);
@@ -92,6 +93,11 @@ public class TaskController {
 	@GetMapping("/getAllCompleteTask/{ownerId}")
 	public List<DAOTask> findCompleteTask(@PathVariable(value = "ownerId") int ownerId) {
 		return taskService.findCompleteTak(ownerId);
+	}
+	
+	@GetMapping("/getAllPercentTask/{ownerId}")
+	public List<TaskPercentDTO> getAllPercentTask(@PathVariable(value = "ownerId") int ownerId) {
+		return taskService.findAllpercentTask(ownerId);
 	}
 	
 }

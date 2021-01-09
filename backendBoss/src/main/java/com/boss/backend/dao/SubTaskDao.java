@@ -13,11 +13,15 @@ import com.boss.backend.model.DAOSubTask;
 
 
 
+
+
 @Repository
 public interface SubTaskDao extends CrudRepository<DAOSubTask,Integer> {
 	
 	@Query("select m from DAOSubTask m where m.taskId.taskId = ?1")
 	List<DAOSubTask> findAllSubTaskByTaskId(int taskId);
+	
+
 	
 	@Transactional
 	void deleteBySubTaskId(int subTaskId);

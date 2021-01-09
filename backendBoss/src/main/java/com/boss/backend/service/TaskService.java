@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.boss.backend.dao.TaskDao;
 import com.boss.backend.model.DAOTask;
 import com.boss.backend.model.TaskDTO;
+import com.boss.backend.model.TaskPercentDTO;
+
 
 @Service
 public class TaskService {
@@ -70,6 +72,10 @@ public class TaskService {
 	
 	public List<DAOTask> findCompleteTak(int taskOwnerId) {
 		return (List<DAOTask>) taskDao.findTaskCompleteByTaskOwnerId(taskOwnerId);
+	}
+	
+	public List<TaskPercentDTO> findAllpercentTask(int taskOwnerId) {
+		return (List<TaskPercentDTO>) taskDao.findTaskPercentByTaskOwnerId(taskOwnerId);
 	}
 	
 	public Optional<DAOTask> findTaskById(int taskId) {
