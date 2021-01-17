@@ -28,6 +28,10 @@ public class UserService {
 		return (List<DAOUser>) userDao.findAll();
 	}
 	
+	public List<DAOUser> findAllUserSameCompany(int userId){
+		return (List<DAOUser>) userDao.findAllUserSameCompanyByUserId(userId);
+	}
+	
 	public Optional<DAOUser> retrieveUser(String username){
 		return Optional.ofNullable(userDao.findByUsername(username));
 	}

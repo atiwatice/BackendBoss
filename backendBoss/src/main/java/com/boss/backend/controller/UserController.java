@@ -32,6 +32,14 @@ public class UserController {
 	public List<DAOUser> getAllUser() {
 		return userService.retrieveUser();
 	}
+	
+	// Get All user
+	@GetMapping("/getUsersSameCompany/{userId}")
+	public List<DAOUser> getAllUserSameCompany(@PathVariable(value = "userId") int userId) {
+		return userService.findAllUserSameCompany(userId);
+	}
+	
+
 
 	// Get the user detail by user name
 	@GetMapping("/getUsers/{username}")
