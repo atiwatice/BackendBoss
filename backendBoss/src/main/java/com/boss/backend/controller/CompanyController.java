@@ -36,16 +36,16 @@ public class CompanyController {
 	}
 	
 	// Get the company name and detail by id
-	@GetMapping("/getCompanies/{companyId}")
-	public ResponseEntity<?> getUserByUsername(@PathVariable(value = "companyId") int companyId) {
-		Optional<DAOCompany> company = Optional.ofNullable(companyService.findCompanyId(companyId));
+	@GetMapping("/getCompanies/{companyName}")
+	public ResponseEntity<?> getUserByUsername(@PathVariable(value = "companyName") String companyName) {
+		Optional<DAOCompany> company = Optional.ofNullable(companyService.findCompanyName(companyName));
 		JSONObject responseJson = new JSONObject();
 		if (!company.isPresent()) {
 			responseJson.put("status", "Not Found this company");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 		
-		DAOCompany companyDetail = companyService.findCompanyId(companyId);
+		DAOCompany companyDetail = companyService.findCompanyName(companyName);
 		responseJson.put("Output", companyDetail);
 		return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 	}
@@ -58,7 +58,7 @@ public class CompanyController {
 
 		if (findCompanyName.isPresent()) {
 			responseJson.put("status", "This company already exist.");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 		
 		companyService.save(company);
@@ -73,7 +73,7 @@ public class CompanyController {
 
 		if (!CheckCompanyName.isPresent()) {
 			responseJson.put("status", "This company don't exist.");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 		DAOCompany companyValue = companyService.findCompanyName(companyName);
 		

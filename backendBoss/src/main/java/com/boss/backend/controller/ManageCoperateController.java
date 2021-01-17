@@ -46,7 +46,7 @@ public class ManageCoperateController {
 		JSONObject responseJson = new JSONObject();
 		if (!(CheckRequesterId.isPresent() && CheckAccepterId.isPresent())) {
 			responseJson.put("status", "RequesterID or AccepterID is not exist");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 		manageCoperateService.save(coperate);
@@ -75,7 +75,7 @@ public class ManageCoperateController {
 		
 		if(manageCoperate == null) {
 			responseJson.put("status", "Not found this request");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 		responseJson.put("status", "User "+requestUser+" is accepted.");
 		return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
@@ -88,7 +88,7 @@ public class ManageCoperateController {
 		JSONObject responseJson = new JSONObject();
 		if(manageCoperate == null) {
 			responseJson.put("status", "Not found this request");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 		
 		responseJson.put("status", "Request from " + confirmUser + " is deleted");
@@ -102,7 +102,7 @@ public class ManageCoperateController {
 			JSONObject responseJson = new JSONObject();
 			if(manageCoperate == null) {
 				responseJson.put("status", "Not found this request");
-				return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 			}
 			
 			responseJson.put("status", "Request from " + confirmUser + " is deleted");

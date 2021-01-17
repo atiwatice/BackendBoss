@@ -41,7 +41,7 @@ public class SubTaskController {
 			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		} catch (ParseException e) {
 			responseJson.put("status", "new sub task error");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 	}
@@ -53,7 +53,7 @@ public class SubTaskController {
 
 		if (updateSubTaskNew == null) {
 			responseJson.put("status", "Not found this subTask");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 		responseJson.put("status", "Update complete");
@@ -66,7 +66,7 @@ public class SubTaskController {
 		JSONObject responseJson = new JSONObject();
 		if (!CheckSubTaskId.isPresent()) {
 			responseJson.put("status", "Not Found this sub Task");
-			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JSONObject>(responseJson, HttpStatus.OK);
 		}
 
 		subTaskService.deleteSubTask(id);
