@@ -33,6 +33,17 @@ public class ManageCoperateDTO {
 		this.status = status;
 	}
 	
+	private int amountSubTaskWork;
+
+	public int getAmountSubTaskWork() {
+		return amountSubTaskWork;
+	}
+
+	public void setAmountSubTaskWork(int amountSubTaskWork) {
+		this.amountSubTaskWork = amountSubTaskWork;
+	}
+	
+	
 	@JsonProperty("requesterId")
 	private void unpackRequester(Integer userId) {
 	    this.requesterId = new DAOUser();

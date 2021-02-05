@@ -3,6 +3,7 @@ package com.boss.backend.model;
 
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -50,6 +51,17 @@ public class DAOCompany {
 
 	public void setCompanyDetail(String companyDetail) {
 		this.companyDetail = companyDetail;
+	}
+	
+	@Column(name="COMPANY_START_DATE",columnDefinition = "DATE " + "CONSTRAINT company_start_date_nn NOT NULL")
+	private Date companyStartDate;
+	
+	public Date getCompanyStartDate() {
+		return companyStartDate;
+	}
+
+	public void setCompanyStartDate(Date companyStartDate) {
+		this.companyStartDate = companyStartDate;
 	}
 	
 	

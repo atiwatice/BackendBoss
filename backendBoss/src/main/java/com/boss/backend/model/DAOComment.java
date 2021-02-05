@@ -9,7 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
-@Table(name = "COMMENTTABLE")
+@Table(name = "COMMENT_TABLE")
 public class DAOComment {
 
 	@Id

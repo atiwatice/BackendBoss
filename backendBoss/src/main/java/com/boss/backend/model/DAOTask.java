@@ -1,9 +1,12 @@
 package com.boss.backend.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "TASK")
@@ -71,6 +74,10 @@ public class DAOTask {
 		this.status = status;
 	}
 	
+	@Column(name ="UPDATEDATE")
+	@CreationTimestamp
+    private LocalDateTime createdAt;
+	
 	@ManyToOne
 	@JoinColumn(name = "TASK_OWNER_ID", referencedColumnName = "userId", columnDefinition = "integer")
 	private DAOUser taskOwnerId;
@@ -84,5 +91,7 @@ public class DAOTask {
 	
 	@OneToMany(targetEntity=DAOSubTask.class,mappedBy="taskId", cascade = CascadeType.ALL)
 	private List<DAOSubTask> DAOSubTaskTaskId;
+	
+	
 	
 }

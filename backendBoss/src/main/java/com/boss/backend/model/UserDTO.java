@@ -88,9 +88,26 @@ public class UserDTO {
 	}
 	
 	@JsonProperty("companyId")
-	private void unpackAccepter(Integer companyid) {
+	private void unpackCompany(Integer companyid) {
 	    this.companyId = new DAOCompany();
 	    companyId.setCompanyId(companyid);
 	}
+	
+	private DAODepartment departmentId;
+	
+	public DAODepartment getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(DAODepartment departmentId) {
+		this.departmentId = departmentId;
+	}
+	
+	@JsonProperty("departmentId")
+	private void unpackDepartment(Integer departmentid) {
+	    this.departmentId = new DAODepartment();
+	    departmentId.setDepartmentId(departmentid);
+	}
+	
 
 }

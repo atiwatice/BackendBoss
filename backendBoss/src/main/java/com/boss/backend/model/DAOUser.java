@@ -115,6 +115,17 @@ public class DAOUser {
 	@CreationTimestamp
     private LocalDateTime createdAt;
 
+	@ManyToOne
+	@JoinColumn(name="DEPARTMENT_ID", referencedColumnName = "departmentId",columnDefinition="integer")
+	private DAODepartment departmentId;
+	
+	public DAODepartment getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(DAODepartment departmentId) {
+		this.departmentId = departmentId;
+	}
 	
 
 	@ManyToOne
@@ -144,4 +155,7 @@ public class DAOUser {
 	
 	@OneToMany(targetEntity=DAOComment.class,mappedBy="commentOwner", cascade = CascadeType.ALL)
 	private List<DAOComment> DAOCommentCommentOwner;
+	
+	@OneToMany(targetEntity=DAOTransaction.class,mappedBy="actionOwnerId", cascade = CascadeType.ALL)
+	private List<DAOTransaction> DAOTransactionActionOwner;
 }

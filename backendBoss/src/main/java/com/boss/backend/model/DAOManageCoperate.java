@@ -57,6 +57,19 @@ public class DAOManageCoperate {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	@Column(name="AMOUNT_SUB_TASK_WORK",columnDefinition= "NUMBER(10,0) DEFAULT 0 " + 
+			"CONSTRAINT manage_sub_task_work_nn  NOT NULL")
+	private int amountSubTaskWork;
+
+	public int getAmountSubTaskWork() {
+		return amountSubTaskWork;
+	}
+
+	public void setAmountSubTaskWork(int amountSubTaskWork) {
+		this.amountSubTaskWork = amountSubTaskWork;
+	}
+	
 
 	@Column(name ="DATETIME")
 	@CreationTimestamp

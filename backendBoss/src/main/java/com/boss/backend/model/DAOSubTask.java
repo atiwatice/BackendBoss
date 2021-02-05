@@ -1,10 +1,13 @@
 package com.boss.backend.model;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -73,6 +76,9 @@ public class DAOSubTask {
 		this.percent = percent;
 	}
 	
+	@Column(name ="UPDATEDATE")
+	@CreationTimestamp
+    private LocalDateTime createdAt;
 	
 	@ManyToOne
 	@JoinColumn(name = "ASSIGN_TO", referencedColumnName = "userId", columnDefinition = "integer")
